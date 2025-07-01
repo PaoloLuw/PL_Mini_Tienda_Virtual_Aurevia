@@ -38,9 +38,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "env": {
-  "production": {
-    "REACT_APP_API_URL": "https://mi-tienda-backend-m9yv.onrender.com"
   }
 }
