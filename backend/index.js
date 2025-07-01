@@ -9,9 +9,10 @@ app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 // CORS (permite conexión con frontend)
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? 'https://tu-app-frontend.onrender.com' 
-    : 'http://localhost:3000'
+  origin: [
+    'https://mi-tienda-frontend-zl5y.onrender.com', // Producción
+    'http://localhost:3000'                         // Desarrollo
+  ]
 }));
 
 // Base de datos simulada (30 productos)
