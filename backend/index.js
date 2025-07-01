@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Configuración para producción (Render)
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.use(express.static(path.join(__dirname, '../../frontend/build')));
 
 // CORS (permite conexión con frontend)
 app.use(cors({
