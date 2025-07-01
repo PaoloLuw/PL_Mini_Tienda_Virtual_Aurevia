@@ -1,4 +1,6 @@
 {
+  "homepage": "https://tu-app-frontend.onrender.com",
+  "proxy": "https://tu-app-backend.onrender.com",
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
