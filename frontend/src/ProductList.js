@@ -5,10 +5,18 @@ import React, { useState, useEffect } from 'react';
 
      // Obtener los productos del backend al cargar el componente
 useEffect(() => {
-  fetch(`${process.env.REACT_APP_API_URL || ''}/api/products`)
-    .then(response => response.json())
-    .then(data => setProducts(data))
-    .catch(error => console.error('Error:', error));
+  console.log("URL de la API:", process.env.REACT_APP_API_URL); // Verifica la URL
+  fetch(`${process.env.REACT_APP_API_URL}/api/products`)
+    .then(response => {
+      console.log("Respuesta del servidor:", response); // ¿Recibe algo?
+      if (!response.ok) throw new Error("Error HTTP: " + response.status);
+      return response.json();
+    })
+    .then(data => {
+      console.log("Datos recibidos:", data); // ¿Llegan los productos?
+      setProducts(data);
+    })
+    .catch(error => console.error("Error al cargar productos:", error));
 }, []);
 
      return (
