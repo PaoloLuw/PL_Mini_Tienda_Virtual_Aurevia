@@ -4,8 +4,6 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Configuración para producción (Render)
-app.use(express.static(path.join(__dirname, '../../frontend/build')));
 
 // CORS (permite conexión con frontend)
 app.use(cors({
@@ -28,10 +26,7 @@ app.get('/api/products', (req, res) => {
   res.json(products);
 });
 
-// Sirve el frontend en producción
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
-});
+
 
 // Iniciar servidor
 app.listen(PORT, () => {
