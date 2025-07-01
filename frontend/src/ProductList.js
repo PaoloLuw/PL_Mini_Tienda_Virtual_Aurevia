@@ -5,12 +5,9 @@ import React, { useState, useEffect } from 'react';
 
      // Obtener los productos del backend al cargar el componente
 useEffect(() => {
-  fetch('http://localhost:5000/api/products')
+  fetch(`${process.env.REACT_APP_API_URL || ''}/api/products`)
     .then(response => response.json())
-    .then(data => {
-      console.log("Datos recibidos:", data); // 👈 Agrega esto
-      setProducts(data);
-    })
+    .then(data => setProducts(data))
     .catch(error => console.error('Error:', error));
 }, []);
 
