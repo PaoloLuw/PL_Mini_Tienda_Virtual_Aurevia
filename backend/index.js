@@ -3,9 +3,15 @@ const cors = require('cors');
 const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 5000;
+const isRender = process.env.RENDER === 'true';
+
+
+const buildPath = isRender
+  ? path.join(__dirname, '../../frontend/build')  // Para Render
+  : path.join(__dirname, '../frontend/build');    // Para desarrollo local
 
 // Configuración para producción (Render)
-app.use(express.static(path.join(__dirname, '../../frontend/build')));
+app.use(express.static(buildPath));
 
 // CORS (permite conexión con frontend)
 app.use(cors({
@@ -30,7 +36,7 @@ app.get('/api/products', (req, res) => {
 
 // Sirve el frontend en producción
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+  res.sendFile(path.join(buildPath, 'index.html'));
 });
 
 // Iniciar servidor

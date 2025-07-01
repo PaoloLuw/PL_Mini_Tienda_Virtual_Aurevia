@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
    const ProductList = ({ addToCart }) => {
      const [products, setProducts] = useState([]);
@@ -6,7 +7,7 @@ import React, { useState, useEffect } from 'react';
      // Obtener los productos del backend al cargar el componente
 useEffect(() => {
   console.log("URL de la API:", process.env.REACT_APP_API_URL); // Verifica la URL
-  fetch(`${process.env.REACT_APP_API_URL}/api/products`)
+  fetch(`${API_URL}/api/products`)
     .then(response => {
       console.log("Respuesta del servidor:", response); // ¿Recibe algo?
       if (!response.ok) throw new Error("Error HTTP: " + response.status);
