@@ -24,7 +24,7 @@ const Cart = ({ cart, incrementQuantity, decrementQuantity, removeFromCart, clea
               {cart.map((item, index) => (
                 <tr key={index}>
                   <td>{item.product.name}</td>
-                  <td>${item.product.price}</td>
+                  <td>S/.{item.product.price}</td>
                   <td>
                     <button className="btn-laser" onClick={() => decrementQuantity(index)}>-</button>
                     <span className="mx-2">{item.quantity}</span>
